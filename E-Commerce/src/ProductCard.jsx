@@ -1,10 +1,10 @@
-import './ProductCard.css';
 import sixes from './assets/Artboard 1.png';
 
 function ProductCard()
 {
     return(
-        <div className="card">
+        <div className="div-body">
+             <div className="card">
             <div className="imgBox">
                 <img src={sixes} alt="" />
             </div>
@@ -13,6 +13,7 @@ function ProductCard()
                 <h2 className="price">$250</h2>
                 <a href="#" className="buy">Buy</a>
             </div>
+        </div>
         </div>
     );
 }
