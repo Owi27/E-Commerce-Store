@@ -4,13 +4,14 @@
     margin: 0;
     padding: 0;
     background-color: whitesmoke;
+    font-family: 'Inconsolata', monospace;
+    color: #ED6D6D;
 }
 
 li, a, button {
-    font-family: 'Inconsolata', monospace;
+    
     font-weight: 500;
     font-style: 16px;
-    color: #ED6D6D;
     text-decoration: none;
 }
 
