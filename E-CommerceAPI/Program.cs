@@ -1,3 +1,5 @@
+using E_CommerceAPI.Data;
+using Microsoft.EntityFrameworkCore;
 
 namespace E_CommerceAPI
 {
@@ -8,6 +10,7 @@ namespace E_CommerceAPI
             var builder = WebApplication.CreateBuilder(args);
             {
                 // Add services to the container.
+                builder.Services.AddDbContext<DataContext>(options => options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
                 builder.Services.AddControllers();
                 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
                 builder.Services.AddEndpointsApiExplorer();
