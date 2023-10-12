@@ -1,20 +1,21 @@
-import sixes from './assets/Artboard 1.png';
+import lambo from './assets/Lamborghini-Aventador_SVJ_Roadster-2020-1280-03.jpg';
 
 function ProductCard()
 {
     return(
-        <div className="div-body">
-             <div className="card">
-            <div className="imgBox">
-                <img src={sixes} alt="" />
+       <>
+        <div className="card">
+            <div className="cardImg">
+                <img src={lambo} alt="" />
             </div>
-            <div className="contentBox">
-                <h3>Jordan 6s</h3>
-                <h2 className="price">$250</h2>
-                <a href="#" className="buy">Buy</a>
+            <div className="cardHeader">
+                <h2>Lamborghini</h2>
+                <p>My favorite car.</p>
+                <p className="price">$<span>500K</span></p>
+                <div className="cardButton">Add to Cart</div>
             </div>
         </div>
-        </div>
+       </>
     );
 }
 
