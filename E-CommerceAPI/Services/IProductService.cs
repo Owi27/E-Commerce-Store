@@ -4,8 +4,8 @@ namespace E_CommerceAPI.Services
 {
     public interface IProductService
     {
-        List<Product> GetAllProducts();
-        Product GetProductById(int id);
-        List<Product> AddProduct(Product newProduct);
+        Task<List<Product>> GetAllProducts();
+        Task<Product> GetProductById(int id);
+        Task<List<Product>> AddProduct(Product newProduct);
     }
 }
