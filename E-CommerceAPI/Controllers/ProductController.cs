@@ -1,4 +1,5 @@
-﻿using E_CommerceAPI.Models;
+﻿using E_CommerceAPI.DTOs;
+using E_CommerceAPI.Models;
 using E_CommerceAPI.Services;
 using Microsoft.AspNetCore.Mvc;
 
@@ -16,19 +17,19 @@ namespace E_CommerceAPI.Controllers
         }
 
         [HttpGet]
-        public async Task<ActionResult<ServiceResponse<List<Product>>>> Get()
+        public async Task<ActionResult<ServiceResponse<List<GetProductDTO>>>> Get()
         {
             return Ok(await _productService.GetAllProducts());
         }
 
         [HttpGet("{id}")]
-        public async Task<ActionResult<ServiceResponse<Product>>> Get(int id) 
+        public async Task<ActionResult<ServiceResponse<GetProductDTO>>> Get(int id) 
         {
             return Ok(await _productService.GetProductById(id));
         }
 
         [HttpPost]
-        public async Task<ActionResult<ServiceResponse<List<Product>>>> AddProduct(Product newProduct)
+        public async Task<ActionResult<ServiceResponse<List<GetProductDTO>>>> AddProduct(AddProductDTO newProduct)
         {
             return Ok(await _productService.AddProduct(newProduct));
         }
