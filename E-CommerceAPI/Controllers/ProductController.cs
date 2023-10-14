@@ -43,5 +43,15 @@ namespace E_CommerceAPI.Controllers
 
             return Ok(response);
         }
+
+        [HttpDelete("{id}")]
+        public async Task<ActionResult<ServiceResponse<GetProductDTO>>> DeleteProduct(int id)
+        {
+            var response = await _productService.DeleteProduct(id);
+            if (response.Data == null)
+                return NotFound(response);
+
+            return Ok(response);
+        }
     }
 }

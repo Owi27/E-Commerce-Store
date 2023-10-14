@@ -10,6 +10,7 @@ namespace E_CommerceAPI
         {
             CreateMap<Product, GetProductDTO>();
             CreateMap<AddProductDTO, Product>();
+            CreateMap<UpdateProductDTO, Product>();
         }
     }
 }

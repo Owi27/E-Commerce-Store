@@ -9,5 +9,6 @@ namespace E_CommerceAPI.Services
         Task<ServiceResponse<GetProductDTO>> GetProductById(int id);
         Task<ServiceResponse<List<GetProductDTO>>> AddProduct(AddProductDTO newProduct);
         Task<ServiceResponse<GetProductDTO>> UpdateProduct(UpdateProductDTO updatedProduct);
+        Task<ServiceResponse<List<GetProductDTO>>> DeleteProduct(int id);
     }
 }

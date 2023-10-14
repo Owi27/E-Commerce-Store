@@ -48,12 +48,36 @@ namespace E_CommerceAPI.Services
                 if (product == null)
                     throw new Exception($"Product with ID '{updatedProduct.ProductID}' not found");
 
+                _mapper.Map<Product>(updatedProduct);
+
                 product.ProductName = updatedProduct.ProductName;
                 product.ProductDescription = updatedProduct.ProductDescription;
                 product.ProductImages = updatedProduct.ProductImages;
                 product.Price = updatedProduct.Price;
 
                 serviceResponse.Data = _mapper.Map<GetProductDTO>(_products);
+            }
+            catch (Exception ex)
+            {
+                serviceResponse.Success = false;
+                serviceResponse.Message = ex.Message;
+            }
+
+            return serviceResponse;
+        }
+
+        public async Task<ServiceResponse<List<GetProductDTO>>> DeleteProduct(int id)
+        {
+            var serviceResponse = new ServiceResponse<List<GetProductDTO>>();
+            try
+            {
+                var product = _products.First(p => p.ProductID == id);
+                if (product == null)
+                    throw new Exception($"Product with ID '{id}' not found");
+
+                _products.Remove(product);
+
+                serviceResponse.Data = _products.Select(p => _mapper.Map<GetProductDTO>(p)).ToList();
             }
             catch (Exception ex)
             {
