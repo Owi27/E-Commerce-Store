@@ -16,19 +16,19 @@ namespace E_CommerceAPI.Controllers
         }
 
         [HttpGet]
-        public async Task<ActionResult<List<Product>>> Get()
+        public async Task<ActionResult<ServiceResponse<List<Product>>>> Get()
         {
             return Ok(await _productService.GetAllProducts());
         }
 
         [HttpGet("{id}")]
-        public async Task<ActionResult> Get(int id) 
+        public async Task<ActionResult<ServiceResponse<Product>>> Get(int id) 
         {
             return Ok(await _productService.GetProductById(id));
         }
 
         [HttpPost]
-        public async Task<ActionResult<List<Product>>> AddProduct(Product newProduct)
+        public async Task<ActionResult<ServiceResponse<List<Product>>>> AddProduct(Product newProduct)
         {
             return Ok(await _productService.AddProduct(newProduct));
         }

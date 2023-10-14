@@ -5,20 +5,27 @@ namespace E_CommerceAPI.Services
     public class ProductService : IProductService
     {
         private readonly List<Product> _products = new List<Product>();
-        public async Task<List<Product>> AddProduct(Product newProduct)
+        public async Task<ServiceResponse<List<Product>>> AddProduct(Product newProduct)
         {
-           _products.Add(newProduct);
-            return _products;
+            var serviceResponse = new ServiceResponse<List<Product>>();
+            _products.Add(newProduct);
+            serviceResponse.Data = _products;
+            return serviceResponse;
         }
 
-        public async Task<List<Product>> GetAllProducts()
+        public async Task<ServiceResponse<List<Product>>> GetAllProducts()
         {
-            return _products;
+            var serviceResponse = new ServiceResponse<List<Product>>();
+            serviceResponse.Data = _products;
+            return serviceResponse;
         }
 
-        public async Task<Product> GetProductById(int id)
+        public async Task<ServiceResponse<Product>> GetProductById(int id)
         {
-            return _products.FirstOrDefault(p => p.ProductID == id);
+            var serviceResponse = new ServiceResponse<Product>();
+            var character = _products.FirstOrDefault(p => p.ProductID == id);
+            serviceResponse.Data = character;
+            return serviceResponse;
         }
     }
 }
