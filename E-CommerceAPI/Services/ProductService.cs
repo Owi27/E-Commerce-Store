@@ -42,14 +42,25 @@ namespace E_CommerceAPI.Services
         public async Task<ServiceResponse<GetProductDTO>> UpdateProduct(UpdateProductDTO updatedProduct)
         {
             var serviceResponse = new ServiceResponse<GetProductDTO>();
-            var product = _products.FirstOrDefault(p => p.ProductID == updatedProduct.ProductID);
+            try
+            {
+                var product = _products.FirstOrDefault(p => p.ProductID == updatedProduct.ProductID);
+                if (product == null)
+                    throw new Exception($"Product with ID '{updatedProduct.ProductID}' not found");
 
-            product.ProductName = updatedProduct.ProductName;
-            product.ProductDescription = updatedProduct.ProductDescription;
-            product.ProductImages = updatedProduct.ProductImages;
-            product.Price = updatedProduct.Price;
+                product.ProductName = updatedProduct.ProductName;
+                product.ProductDescription = updatedProduct.ProductDescription;
+                product.ProductImages = updatedProduct.ProductImages;
+                product.Price = updatedProduct.Price;
 
-            serviceResponse.Data = _mapper.Map<GetProductDTO>(_products);
+                serviceResponse.Data = _mapper.Map<GetProductDTO>(_products);
+            }
+            catch (Exception ex)
+            {
+                serviceResponse.Success = false;
+                serviceResponse.Message = ex.Message;
+            }
+
             return serviceResponse;
         }
     }
