@@ -33,5 +33,11 @@ namespace E_CommerceAPI.Controllers
         {
             return Ok(await _productService.AddProduct(newProduct));
         }
+
+        [HttpPut]
+        public async Task<ActionResult<ServiceResponse<List<GetProductDTO>>>> UpdateProduct(UpdateProductDTO updatedProduct)
+        {
+            return Ok(await _productService.UpdateProduct(updatedProduct));
+        }
     }
 }

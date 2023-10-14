@@ -39,9 +39,18 @@ namespace E_CommerceAPI.Services
             return serviceResponse;
         }
 
-        public Task<ServiceResponse<List<GetProductDTO>>> UpdateProduct(UpdateProductDTO updatedProduct)
+        public async Task<ServiceResponse<GetProductDTO>> UpdateProduct(UpdateProductDTO updatedProduct)
         {
-            
+            var serviceResponse = new ServiceResponse<GetProductDTO>();
+            var product = _products.FirstOrDefault(p => p.ProductID == updatedProduct.ProductID);
+
+            product.ProductName = updatedProduct.ProductName;
+            product.ProductDescription = updatedProduct.ProductDescription;
+            product.ProductImages = updatedProduct.ProductImages;
+            product.Price = updatedProduct.Price;
+
+            serviceResponse.Data = _mapper.Map<GetProductDTO>(_products);
+            return serviceResponse;
         }
     }
 }
