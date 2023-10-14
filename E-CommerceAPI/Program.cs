@@ -1,4 +1,5 @@
 using E_CommerceAPI.Data;
+using E_CommerceAPI.Services;
 using Microsoft.EntityFrameworkCore;
 
 namespace E_CommerceAPI
@@ -15,6 +16,7 @@ namespace E_CommerceAPI
                 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
                 builder.Services.AddEndpointsApiExplorer();
                 builder.Services.AddSwaggerGen();
+                builder.Services.AddScoped<IProductService, ProductService>();
             }
 
             var app = builder.Build();
