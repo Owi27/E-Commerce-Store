@@ -11,6 +11,7 @@ namespace E_CommerceAPI
             var builder = WebApplication.CreateBuilder(args);
             {
                 // Add services to the container.
+                builder.Services.AddCors(options => options.AddPolicy("ReactECommerce", policy => policy.WithOrigins("http://localhost:5173").AllowAnyHeader().AllowAnyMethod()));
                 builder.Services.AddDbContext<DataContext>(options => options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
                 builder.Services.AddControllers();
                 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
@@ -29,6 +30,12 @@ namespace E_CommerceAPI
                     app.UseSwaggerUI();
                 }
                 app.UseHttpsRedirection();
+                app.Use((ctx, next) =>
+                {
+                    ctx.Response.Headers["Access-Control-Allow-Origin"] = "http://localhost:5173";
+                    return next();
+                });
+                app.UseCors("ReactECommerce");
                 app.UseAuthorization();
                 app.MapControllers();
                 app.Run();

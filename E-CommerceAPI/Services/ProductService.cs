@@ -1,6 +1,8 @@
 ﻿using AutoMapper;
+using E_CommerceAPI.Data;
 using E_CommerceAPI.DTOs;
 using E_CommerceAPI.Models;
+using Microsoft.EntityFrameworkCore;
 
 namespace E_CommerceAPI.Services
 {
@@ -8,9 +10,11 @@ namespace E_CommerceAPI.Services
     {
         private readonly List<Product> _products = new List<Product>();
         private readonly IMapper _mapper;
+        private readonly DataContext _dataContext;
 
-        public ProductService(IMapper mapper)
+        public ProductService(IMapper mapper, DataContext dataContext)
         {
+            _dataContext = dataContext;
             _mapper = mapper;
         }
 
@@ -18,24 +22,25 @@ namespace E_CommerceAPI.Services
         {
             var serviceResponse = new ServiceResponse<List<GetProductDTO>>();
             var product = _mapper.Map<Product>(newProduct);
-            product.ProductID = _products.Max(p => p.ProductID);
-            _products.Add(_mapper.Map<Product>(newProduct));
-            serviceResponse.Data = _products.Select(p => _mapper.Map<GetProductDTO>(p)).ToList();
+            product.ProductID = await _dataContext.Products.MaxAsync(p => p.ProductID);
+            await _dataContext.Products.AddAsync(_mapper.Map<Product>(newProduct));
+            //serviceResponse.Data = await _dataContext.Products.Where(p=>p.ProductID == Get//_dataContext.Products.Select(p => _mapper.Map<GetProductDTO>(p)).ToList();
             return serviceResponse;
         }
 
         public async Task<ServiceResponse<List<GetProductDTO>>> GetAllProducts()
         {
             var serviceResponse = new ServiceResponse<List<GetProductDTO>>();
-            serviceResponse.Data = _products.Select(p => _mapper.Map<GetProductDTO>(p)).ToList();
+            var dbProducts = await _dataContext.Products.ToListAsync();
+            serviceResponse.Data = dbProducts.Select(p => _mapper.Map<GetProductDTO>(p)).ToList();
             return serviceResponse;
         }
 
         public async Task<ServiceResponse<GetProductDTO>> GetProductById(int id)
         {
             var serviceResponse = new ServiceResponse<GetProductDTO>();
-            var product = _products.FirstOrDefault(p => p.ProductID == id);
-            serviceResponse.Data = _mapper.Map<GetProductDTO>(product);
+            var dbProduct = await _dataContext.Products.FirstOrDefaultAsync(p => p.ProductID == id);
+            serviceResponse.Data = _mapper.Map<GetProductDTO>(dbProduct);
             return serviceResponse;
         }
 
@@ -44,7 +49,7 @@ namespace E_CommerceAPI.Services
             var serviceResponse = new ServiceResponse<GetProductDTO>();
             try
             {
-                var product = _products.FirstOrDefault(p => p.ProductID == updatedProduct.ProductID);
+                var product = await _dataContext.Products.FirstOrDefaultAsync(p => p.ProductID == updatedProduct.ProductID);
                 if (product == null)
                     throw new Exception($"Product with ID '{updatedProduct.ProductID}' not found");
 
@@ -52,10 +57,10 @@ namespace E_CommerceAPI.Services
 
                 product.ProductName = updatedProduct.ProductName;
                 product.ProductDescription = updatedProduct.ProductDescription;
-                product.ProductImages = updatedProduct.ProductImages;
+                product.ImageUri = updatedProduct.ImageUri;
                 product.Price = updatedProduct.Price;
 
-                serviceResponse.Data = _mapper.Map<GetProductDTO>(_products);
+                serviceResponse.Data = _mapper.Map<GetProductDTO>(_dataContext.Products);
             }
             catch (Exception ex)
             {

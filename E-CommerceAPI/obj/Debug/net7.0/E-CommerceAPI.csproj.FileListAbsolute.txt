@@ -82,3 +82,9 @@ C:\Users\Owi\Documents\GitHub\E-Commerce-Store\E-CommerceAPI\bin\Debug\net7.0\Mo
 C:\Users\Owi\Documents\GitHub\E-Commerce-Store\E-CommerceAPI\bin\Debug\net7.0\System.CodeDom.dll
 C:\Users\Owi\Documents\GitHub\E-Commerce-Store\E-CommerceAPI\bin\Debug\net7.0\AutoMapper.dll
 C:\Users\Owi\Documents\GitHub\E-Commerce-Store\E-CommerceAPI\bin\Debug\net7.0\AutoMapper.Extensions.Microsoft.DependencyInjection.dll
+C:\Users\Owi\Documents\GitHub\E-Commerce-Store\E-CommerceAPI\bin\Debug\net7.0\System.Web.Cors.dll
+C:\Users\Owi\Documents\GitHub\E-Commerce-Store\E-CommerceAPI\bin\Debug\net7.0\System.Net.Http.Formatting.dll
+C:\Users\Owi\Documents\GitHub\E-Commerce-Store\E-CommerceAPI\bin\Debug\net7.0\System.Web.Http.dll
+C:\Users\Owi\Documents\GitHub\E-Commerce-Store\E-CommerceAPI\bin\Debug\net7.0\System.Web.Http.Cors.dll
+C:\Users\Owi\Documents\GitHub\E-Commerce-Store\E-CommerceAPI\bin\Debug\net7.0\Newtonsoft.Json.dll
+C:\Users\Owi\Documents\GitHub\E-Commerce-Store\E-CommerceAPI\bin\Debug\net7.0\Newtonsoft.Json.Bson.dll
