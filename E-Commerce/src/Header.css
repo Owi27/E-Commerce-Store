@@ -1,0 +1,50 @@
+li, a, button {
+    
+    font-weight: 500;
+    font-style: 16px;
+    text-decoration: none;
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 30px 10%;
+}
+
+h1 {
+    cursor: pointer;
+    color: #ED6D6D;
+    font-family: 'Inconsolata', monospace;
+    font-weight: normal;
+}
+
+.nav-links {
+    list-style: none;
+}
+
+.nav-links li {
+    display: inline-block;
+    padding: 0px 20px;
+}
+
+.nav-links li a {
+    transition: all 0.3s ease 0s;
+}
+
+.nav-links li a:hover {
+    color: #541616;
+}
+
+button {
+    padding: 9px 25px;
+    background-color: rgba(84,22,22, 1);
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: all 0.3s ease 0s;
+}
+
+button:hover {
+    background-color: rgba(84,22,22, 0.8);
+}

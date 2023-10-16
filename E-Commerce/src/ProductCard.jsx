@@ -1,5 +1,5 @@
 import { useEffect } from 'react';
-import lambo from './assets/Lamborghini-Aventador_SVJ_Roadster-2020-1280-03.jpg';
+import './ProductCard.css';
 
 function ProductCard({name, price, imageUri, description})
 {
