@@ -7,14 +7,11 @@ function ProductCard({name, price, imageUri, description})
     return(
        <>
         <div className="card">
-            <div className="cardImg">
-                <img src={imageUri} alt=""/>
-            </div>
+                <img className="cardImg" src={imageUri} alt={name}/>
             <div className="cardHeader">
-                <h2>{name}</h2>
-                <p>{description}</p>
-                <p className="price">$<span>{price}</span></p>
-                <div className="cardButton">Add to Cart</div>
+                <h2 className='cardName'>{name}</h2>
+                <br/>
+                <h4 className="price">$<span>{price}</span></h4>
             </div>
         </div>
        </>

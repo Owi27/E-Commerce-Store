@@ -1,0 +1,28 @@
+.card
+{
+    border: 3px solid #870808;
+    border-radius: 5px;
+    box-shadow: 5px 5px 5px #FFA8A8;
+    padding: 5px;
+    margin: 2%;
+    text-align: center;
+    width: 16%;
+    height: 250px;
+    display: inline-block;
+    overflow: hidden;
+    position: relative;
+}
+
+.cardImg
+{
+    max-width: 80%;
+    height: auto;
+    margin-bottom: 0px;
+}
+
+.cardName
+{
+    margin: 0;
+    font-size: 100%;
+    text-align: center;
+}
