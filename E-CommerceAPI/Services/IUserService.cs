@@ -7,5 +7,8 @@ namespace E_CommerceAPI.Services
     {
         Task<ServiceResponse<int>> Register(UserRegisterRequest request);
         Task<ServiceResponse<string>> Login(UserLoginRequest request);
+        Task<ServiceResponse<string>> Verify(string token);
+        Task<ServiceResponse<string>> ForgotPassword(string email);
+        Task<ServiceResponse<string>> ResetPassword(ResetPasswordRequest request);
     }
 }
