@@ -18,7 +18,13 @@ namespace E_CommerceAPI.Controllers
         [HttpPost("register")]
         public async Task<ActionResult> Register(UserRegisterRequest request)
         {
-            return Ok(await _userService.RegisterUser(request));
+            return Ok(await _userService.Register(request));
+        }
+
+        [HttpPost("login")]
+        public async Task<ActionResult> Login(UserLoginRequest request)
+        {
+            return Ok(await _userService.Login(request));
         }
     }
 }

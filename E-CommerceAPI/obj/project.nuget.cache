@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "W6sMSJel2TIuDTgN1dE+RXmIU0oXTOAr6u7AW+okRBRsOEZWPpfwsI+OudZmStNzKzkmuF3tMKet7JQbOlulOw==",
+  "dgSpecHash": "ByYz3f0JgZuJGInQUztWsEOhSHbRHX8PfP9eaMivbtwkc1oVQbJ3tJoGZixJb/uRC1+EM8FbgkzAE3Kd36B/WA==",
   "success": true,
   "projectFilePath": "C:\\Users\\Owi\\Documents\\GitHub\\E-Commerce-Store\\E-CommerceAPI\\E-CommerceAPI.csproj",
   "expectedPackageFiles": [
@@ -13,6 +13,7 @@
     "C:\\Users\\Owi\\.nuget\\packages\\microsoft.aspnet.webapi.client\\5.2.9\\microsoft.aspnet.webapi.client.5.2.9.nupkg.sha512",
     "C:\\Users\\Owi\\.nuget\\packages\\microsoft.aspnet.webapi.core\\5.2.9\\microsoft.aspnet.webapi.core.5.2.9.nupkg.sha512",
     "C:\\Users\\Owi\\.nuget\\packages\\microsoft.aspnet.webapi.cors\\5.2.9\\microsoft.aspnet.webapi.cors.5.2.9.nupkg.sha512",
+    "C:\\Users\\Owi\\.nuget\\packages\\microsoft.aspnetcore.authentication.jwtbearer\\7.0.13\\microsoft.aspnetcore.authentication.jwtbearer.7.0.13.nupkg.sha512",
     "C:\\Users\\Owi\\.nuget\\packages\\microsoft.aspnetcore.cryptography.internal\\7.0.12\\microsoft.aspnetcore.cryptography.internal.7.0.12.nupkg.sha512",
     "C:\\Users\\Owi\\.nuget\\packages\\microsoft.aspnetcore.cryptography.keyderivation\\7.0.12\\microsoft.aspnetcore.cryptography.keyderivation.7.0.12.nupkg.sha512",
     "C:\\Users\\Owi\\.nuget\\packages\\microsoft.aspnetcore.identity.entityframeworkcore\\7.0.12\\microsoft.aspnetcore.identity.entityframeworkcore.7.0.12.nupkg.sha512",

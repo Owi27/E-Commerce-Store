@@ -5,6 +5,7 @@ namespace E_CommerceAPI.Services
 {
     public interface IUserService
     {
-        Task<ServiceResponse<int>> RegisterUser(UserRegisterRequest request);
+        Task<ServiceResponse<int>> Register(UserRegisterRequest request);
+        Task<ServiceResponse<string>> Login(UserLoginRequest request);
     }
 }
