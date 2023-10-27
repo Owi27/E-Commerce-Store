@@ -10,5 +10,6 @@ namespace E_CommerceAPI.Data
         }
 
         public DbSet<Product> Products => Set<Product>();
+        public DbSet<User> Users => Set<User>();
     }
 }
