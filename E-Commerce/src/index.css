@@ -1,16 +1,38 @@
 @import url('https://fonts.googleapis.com/css2?family=Inconsolata:wght@300&display=swap');
+
+.gradient-background {
+  background: linear-gradient(45deg,#541616,#870808,#ffdbdb);
+  background-size: 180% 180%;
+  animation: gradient-animation 12s ease infinite;
+}
+
 * {
     box-sizing: border-box;
     margin: 0;
     padding: 0;
-    background-color: whitesmoke;
     font-family: 'Inconsolata', monospace;
     color: #ED6D6D;
+    background: linear-gradient(45deg,#541616,#870808,#ffdbdb);
+    background-size: 180% 180%;
+    animation: gradient-animation 12s ease infinite;
+}
+
+@keyframes gradient-animation {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
 }
 
 #productPageName
 {
   text-align: center;
+  background: none;
 }
 /*
 :root {

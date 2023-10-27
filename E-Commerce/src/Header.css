@@ -1,8 +1,8 @@
-li, a, button {
-    
+.nav-links li, a, .headerBtn {
     font-weight: 500;
     font-style: 16px;
     text-decoration: none;
+    background: none;
 }
 
 header {
@@ -10,17 +10,20 @@ header {
     justify-content: space-between;
     align-items: center;
     padding: 30px 10%;
+    background: none;
 }
 
-h1 {
+.headerTitle {
     cursor: pointer;
     color: #ED6D6D;
     font-family: 'Inconsolata', monospace;
     font-weight: normal;
+    background: none;
 }
 
 .nav-links {
     list-style: none;
+    background: none;
 }
 
 .nav-links li {
@@ -36,7 +39,7 @@ h1 {
     color: #541616;
 }
 
-button {
+.headerBtn {
     padding: 9px 25px;
     background-color: rgba(84,22,22, 1);
     border: none;
@@ -45,6 +48,11 @@ button {
     transition: all 0.3s ease 0s;
 }
 
-button:hover {
+.headerBtn:hover {
     background-color: rgba(84,22,22, 0.8);
+}
+
+nav
+{
+    background: none;
 }

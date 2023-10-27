@@ -25,7 +25,6 @@ function Products()
        <>
             <h2 id='productPageName'>Cars</h2>
             <br/>
-            <div className="products">
             {Array.isArray(data) ? (data.map(product => (
                 <ProductCard 
                 key={product.productID}
@@ -40,7 +39,6 @@ function Products()
                 <>
                 </>
             )}
-        </div>
         </>
     );
 }
