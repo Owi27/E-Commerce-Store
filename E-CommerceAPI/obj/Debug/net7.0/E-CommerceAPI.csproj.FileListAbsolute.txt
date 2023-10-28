@@ -88,3 +88,9 @@ C:\Users\Owi\Documents\GitHub\E-Commerce-Store\E-CommerceAPI\bin\Debug\net7.0\Sy
 C:\Users\Owi\Documents\GitHub\E-Commerce-Store\E-CommerceAPI\bin\Debug\net7.0\System.Web.Http.Cors.dll
 C:\Users\Owi\Documents\GitHub\E-Commerce-Store\E-CommerceAPI\bin\Debug\net7.0\Newtonsoft.Json.dll
 C:\Users\Owi\Documents\GitHub\E-Commerce-Store\E-CommerceAPI\bin\Debug\net7.0\Newtonsoft.Json.Bson.dll
+C:\Users\Owi\Documents\GitHub\E-Commerce-Store\E-CommerceAPI\bin\Debug\net7.0\BouncyCastle.Cryptography.dll
+C:\Users\Owi\Documents\GitHub\E-Commerce-Store\E-CommerceAPI\bin\Debug\net7.0\MailKit.dll
+C:\Users\Owi\Documents\GitHub\E-Commerce-Store\E-CommerceAPI\bin\Debug\net7.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll
+C:\Users\Owi\Documents\GitHub\E-Commerce-Store\E-CommerceAPI\bin\Debug\net7.0\MimeKit.dll
+C:\Users\Owi\Documents\GitHub\E-Commerce-Store\E-CommerceAPI\bin\Debug\net7.0\System.Security.Cryptography.Pkcs.dll
+C:\Users\Owi\Documents\GitHub\E-Commerce-Store\E-CommerceAPI\bin\Debug\net7.0\runtimes\win\lib\net7.0\System.Security.Cryptography.Pkcs.dll
