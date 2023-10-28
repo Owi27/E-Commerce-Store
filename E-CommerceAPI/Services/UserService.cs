@@ -1,10 +1,13 @@
 ﻿using Azure.Core;
 using E_CommerceAPI.Data;
 using E_CommerceAPI.Models;
+using MailKit.Net.Smtp;
 using Microsoft.AspNetCore.Http.HttpResults;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.IdentityModel.Tokens;
+using MimeKit;
+using MimeKit.Text;
 using Newtonsoft.Json.Linq;
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
@@ -109,7 +112,6 @@ namespace E_CommerceAPI.Services
                 serviceResponse.Message = "User not found";
                 return serviceResponse;
             }
-            //Send email to reset pass
 
             user.PasswordResetToken = Guid.NewGuid().ToString();
             user.ResetTokenExpiration = DateTime.Now.AddDays(1);
@@ -194,6 +196,24 @@ namespace E_CommerceAPI.Services
             SecurityToken token = tokenHandler.CreateToken(tokenDescriptor);
 
             return tokenHandler.WriteToken(token);
+        }
+
+        private void SendResetEmail(string email, string resetToken)
+        {
+            //Send email to reset pass
+            var mail = new MimeMessage();
+            mail.From.Add(MailboxAddress.Parse("karlee.huels57@ethereal.email"));
+            mail.To.Add(MailboxAddress.Parse(email));
+            mail.Subject = "Test Mail";
+            mail.Body = new TextPart(TextFormat.Html) { Text = "<h1>I guess</h1>" };
+
+            using (var smtp = new SmtpClient())
+            {
+                smtp.Connect("smtp.ethereal.email", 587, MailKit.Security.SecureSocketOptions.StartTls);
+                smtp.Authenticate("karlee.huels57@ethereal.email", "WGJygq8GBr5H5XbjFY");
+                smtp.Send(mail);
+                smtp.Disconnect(true);
+            }
         }
     }
 }
