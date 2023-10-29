@@ -80,6 +80,9 @@ namespace E_CommerceAPI.Services
             _dataContext.Users.Add(user);
             await _dataContext.SaveChangesAsync();
 
+            //Send Verification Email
+            SendEmail(user.Email, user.VerificationToken, "Verify");
+
             serviceResponse.Data = user.ID;
             return serviceResponse;
         }
@@ -198,19 +201,28 @@ namespace E_CommerceAPI.Services
             return tokenHandler.WriteToken(token);
         }
 
-        private void SendResetEmail(string email, string resetToken)
+        private void SendEmail(string email, string token, string type)
         {
             //Send email to reset pass
             var mail = new MimeMessage();
-            mail.From.Add(MailboxAddress.Parse("karlee.huels57@ethereal.email"));
-            mail.To.Add(MailboxAddress.Parse(email));
+            mail.From.Add(MailboxAddress.Parse("keyon69@ethereal.email"));
+            mail.To.Add(MailboxAddress.Parse("keyon69@ethereal.email"));
             mail.Subject = "Test Mail";
-            mail.Body = new TextPart(TextFormat.Html) { Text = "<h1>I guess</h1>" };
+
+            mail.Body = new TextPart(TextFormat.Html)
+            {
+                Text = type switch
+                {
+                    "Verify" => $"<h1>Verify Account</h1>\r\n <p>To Verify <a href=\"http://localhost:5173/Verify/{token}\">Click Here</a></p>",
+                    "Reset" => "<h1>Reset Your Password</h1>",
+                    _ => string.Empty
+                }
+            };
 
             using (var smtp = new SmtpClient())
             {
                 smtp.Connect("smtp.ethereal.email", 587, MailKit.Security.SecureSocketOptions.StartTls);
-                smtp.Authenticate("karlee.huels57@ethereal.email", "WGJygq8GBr5H5XbjFY");
+                smtp.Authenticate("keyon69@ethereal.email", "df5z3SvZaxD1YdpKcQ");
                 smtp.Send(mail);
                 smtp.Disconnect(true);
             }

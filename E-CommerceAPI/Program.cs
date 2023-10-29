@@ -22,16 +22,16 @@ namespace E_CommerceAPI
                 builder.Services.AddAutoMapper(typeof(Program).Assembly);
                 builder.Services.AddScoped<IProductService, ProductService>();
                 builder.Services.AddScoped<IUserService, UserService>();
-                builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddJwtBearer(options => 
-                {
-                    options.TokenValidationParameters = new TokenValidationParameters
-                    {
-                        ValidateIssuerSigningKey = true,
-                        IssuerSigningKey = new SymmetricSecurityKey(System.Text.Encoding.UTF8.GetBytes(builder.Configuration.GetSection("AppSettings:Token").Value!)),
-                        ValidateIssuer = false,
-                        ValidateAudience = false
-                    };
-                });
+                //builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddJwtBearer(options => 
+                //{
+                //    options.TokenValidationParameters = new TokenValidationParameters
+                //    {
+                //        ValidateIssuerSigningKey = true,
+                //        IssuerSigningKey = new SymmetricSecurityKey(System.Text.Encoding.UTF8.GetBytes(builder.Configuration.GetSection("AppSettings:Token").Value!)),
+                //        ValidateIssuer = false,
+                //        ValidateAudience = false
+                //    };
+                //});
             }
 
             var app = builder.Build();

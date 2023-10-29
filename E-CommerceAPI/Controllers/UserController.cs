@@ -16,31 +16,31 @@ namespace E_CommerceAPI.Controllers
             _userService = userService;
         }
 
-        [HttpPost("register")]
+        [HttpPost("Register")]
         public async Task<ActionResult<ServiceResponse<int>>> Register(UserRegisterRequest request)
         {
             return Ok(await _userService.Register(request));
         }
 
-        [HttpPost("login")]
+        [HttpPost("Login")]
         public async Task<ActionResult<ServiceResponse<string>>> Login(UserLoginRequest request)
         {
             return Ok(await _userService.Login(request));
         }
 
-        [HttpPost("verify")]
-        public async Task<ActionResult<ServiceResponse<string>>> Verify(string token)
+        [HttpPost("Verify")]
+        public async Task<ActionResult<ServiceResponse<string>>> Verify(TokenObject token)
         {
-            return Ok(await _userService.Verify(token));
+            return Ok(await _userService.Verify(token.Token));
         }
 
-        [HttpPost("forgot-password")]
+        [HttpPost("Forgot-Password")]
         public async Task<ActionResult<ServiceResponse<string>>> ForgotPassword(string email)
         {
             return Ok(await _userService.ForgotPassword(email));
         }
 
-        [HttpPost("reset-password")]
+        [HttpPost("Reset-Password")]
         public async Task<ActionResult<ServiceResponse<string>>> ResetPassword(ResetPasswordRequest request)
         {
             return Ok(await _userService.ResetPassword(request));

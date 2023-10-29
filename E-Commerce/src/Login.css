@@ -137,3 +137,10 @@ input:valid ~ label
 {
     text-decoration: underline;
 }
+
+.returnMessage
+{
+    background: none;
+    text-align: center;
+    color: white;
+}

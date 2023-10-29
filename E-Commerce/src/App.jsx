@@ -2,6 +2,7 @@ import Header from "./Header";
 import Footer from "./Footer";
 import Products from "./Products";
 import Login from "./Login";
+import Verify from "./Verify";
 import About from "./About";
 import Error from "./Error";
 import "./App.css";
@@ -16,6 +17,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Products/>}/>
           <Route path="/Login" element={<Login/>}/>
+          <Route path="/Verify/:token" element={<Verify/>}/>
           <Route path="/About" element={<About/>}/>
           <Route path="*" element={<Error/>}/>
         </Routes>
