@@ -97,6 +97,14 @@ namespace E_CommerceAPI.Services
                 serviceResponse.Message = "Invalid Token";
                 return serviceResponse;
             }
+
+            if (user.VerifiedAt.HasValue)
+            {
+                serviceResponse.Success = false;
+                serviceResponse.Message = "User Already Verified";
+                return serviceResponse;
+            }
+
             user.VerifiedAt = DateTime.Now;
             await _dataContext.SaveChangesAsync();
 
@@ -119,6 +127,8 @@ namespace E_CommerceAPI.Services
             user.PasswordResetToken = Guid.NewGuid().ToString();
             user.ResetTokenExpiration = DateTime.Now.AddDays(1);
             await _dataContext.SaveChangesAsync();
+
+            SendEmail(email, user.PasswordResetToken, "Forgot Password");
 
             serviceResponse.Data = user.ResetTokenExpiration.ToString();
 
@@ -205,8 +215,8 @@ namespace E_CommerceAPI.Services
         {
             //Send email to reset pass
             var mail = new MimeMessage();
-            mail.From.Add(MailboxAddress.Parse("keyon69@ethereal.email"));
-            mail.To.Add(MailboxAddress.Parse("keyon69@ethereal.email"));
+            mail.From.Add(MailboxAddress.Parse("owi.ecommerce02@gmail.com"));
+            mail.To.Add(MailboxAddress.Parse("owi.ecommerce02@gmail.com"));
             mail.Subject = "Test Mail";
 
             mail.Body = new TextPart(TextFormat.Html)
@@ -214,6 +224,7 @@ namespace E_CommerceAPI.Services
                 Text = type switch
                 {
                     "Verify" => $"<h1>Verify Account</h1>\r\n <p>To Verify <a href=\"http://localhost:5173/Verify/{token}\">Click Here</a></p>",
+                    "Forgot Password" => $"<h1>Forgot Password</h1>\r\n <p>To Reset Password <a href=\"http://localhost:5173/ResetPassword/{token}\">Click Here</a></p>",
                     "Reset" => "<h1>Reset Your Password</h1>",
                     _ => string.Empty
                 }
@@ -221,8 +232,8 @@ namespace E_CommerceAPI.Services
 
             using (var smtp = new SmtpClient())
             {
-                smtp.Connect("smtp.ethereal.email", 587, MailKit.Security.SecureSocketOptions.StartTls);
-                smtp.Authenticate("keyon69@ethereal.email", "df5z3SvZaxD1YdpKcQ");
+                smtp.Connect("smtp.gmail.com", 587, MailKit.Security.SecureSocketOptions.StartTls);
+                smtp.Authenticate("owi.ecommerce02@gmail.com", "nvosndcjpmphdvgs");
                 smtp.Send(mail);
                 smtp.Disconnect(true);
             }

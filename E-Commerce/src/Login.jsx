@@ -37,7 +37,10 @@ function Login()
         const uri = 'https://localhost:7159/User/Register';
 
         axios.post(uri, data)
-        .then(result => SetReturnMessage(result.data.message))
+        .then(result => {
+            SetReturnMessage(result.data.message)
+            sessionStorage.setItem('JWTToken', result.data.data)
+        })
 
         console.log(returnMessage);
     }
@@ -52,9 +55,21 @@ function Login()
         const uri = 'https://localhost:7159/User/Login';
 
         axios.post(uri, data)
-        .then(result => SetReturnMessage(result.data.message))
+        .then(result => {
+            SetReturnMessage(result.data.message);
+            sessionStorage.setItem('JWTToken', result.data.data);
+        });
+    }
 
-        console.log(returnMessage);
+    const ForgotPassword = () =>
+    {
+        const uri = 'https://localhost:7159/User/Forgot-Password/?email='+email;
+
+        axios.post(uri)
+        .then(result => {
+            SetReturnMessage(result.data.message);
+            
+        });
     }
 
     return(
@@ -78,7 +93,7 @@ function Login()
                             </div>
                             ) : <></>}
                             <div className="forget">
-                                <label htmlFor=""><input type="checkbox"/>Remember Me <a href="#">Forgot Password</a></label>
+                                <label htmlFor=""><input type="checkbox"/>Remember Me <a href="" onClick={() => ForgotPassword()}>Forgot Password</a></label>
                             </div>
                             
                             {register ? (

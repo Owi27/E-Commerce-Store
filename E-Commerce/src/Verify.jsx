@@ -1,4 +1,4 @@
-import { useNavigate, useParams } from 'react-router-dom';
+;import { useNavigate, useParams } from 'react-router-dom';
 import './Verify.css';
 import axios from 'axios';
 import React, { useState } from 'react';
@@ -11,23 +11,27 @@ function Verify()
 
     const Verify = () =>
     {
-        const data = {
-            Token: token.token
-        }
+        const uri = 'https://localhost:7159/User/Verify/?token='+ token.token;
 
-        const uri = 'https://localhost:7159/User/Verify';
-
-        axios.post(uri, data)
-        .then(result => SetReturnMessage(result.data.message))
-
-        nav("/")
+        axios.post(uri)
+        .then(result => SetReturnMessage(result.data.message));
+        
+        if (!returnMessage) nav("/");
     }
 
     return(
         <>
         <div className="verify">
             <h1>Verify Account</h1>
-            <p>To Verify Account <button onClick={() => Verify()}>Click Here</button></p>
+            {returnMessage ? (
+                <>
+                <p>{returnMessage}</p>
+                </>
+            ) : (
+                <>
+                <p>To Verify Account <button onClick={() => Verify()}>Click Here</button></p>
+                </>
+            )}
         </div>
         </>
     );

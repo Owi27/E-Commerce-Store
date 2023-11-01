@@ -29,9 +29,9 @@ namespace E_CommerceAPI.Controllers
         }
 
         [HttpPost("Verify")]
-        public async Task<ActionResult<ServiceResponse<string>>> Verify(TokenObject token)
+        public async Task<ActionResult<ServiceResponse<string>>> Verify(string token)
         {
-            return Ok(await _userService.Verify(token.Token));
+            return Ok(await _userService.Verify(token));
         }
 
         [HttpPost("Forgot-Password")]
