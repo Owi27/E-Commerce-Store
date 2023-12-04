@@ -26,16 +26,16 @@ namespace E_CommerceAPI
                 builder.Services.AddScoped<IProductService, Services.ProductService>();
                 builder.Services.AddScoped<IUserService, UserService>();
                 builder.Services.AddScoped<ICheckoutService, CheckoutService>();
-                //builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddJwtBearer(options => 
-                //{
-                //    options.TokenValidationParameters = new TokenValidationParameters
-                //    {
-                //        ValidateIssuerSigningKey = true,
-                //        IssuerSigningKey = new SymmetricSecurityKey(System.Text.Encoding.UTF8.GetBytes(builder.Configuration.GetSection("AppSettings:Token").Value!)),
-                //        ValidateIssuer = false,
-                //        ValidateAudience = false
-                //    };
-                //});
+                builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddJwtBearer(options =>
+                {
+                    options.TokenValidationParameters = new TokenValidationParameters
+                    {
+                        ValidateIssuerSigningKey = true,
+                        IssuerSigningKey = new SymmetricSecurityKey(System.Text.Encoding.UTF8.GetBytes(builder.Configuration.GetSection("AppSettings:Token").Value!)),
+                        ValidateIssuer = false,
+                        ValidateAudience = false
+                    };
+                });
             }
 
             var app = builder.Build();
