@@ -7,6 +7,8 @@ import ResetPassword from "./ResetPassword";
 import User from "./User";
 import About from "./About";
 import Error from "./Error";
+import Success from "./Success";
+import Failed from "./Failed";
 import "./App.css";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
@@ -23,6 +25,8 @@ function App() {
           <Route path="/Verify/:token" element={<Verify/>}/>
           <Route path="/ResetPassword/:token" element={<ResetPassword/>}/>
           <Route path="/About" element={<About/>}/>
+          <Route path="/Success" element={<Success/>}/>
+          <Route path="/Failed" element={<Failed/>}/>
           <Route path="*" element={<Error/>}/>
         </Routes>
         </BrowserRouter>

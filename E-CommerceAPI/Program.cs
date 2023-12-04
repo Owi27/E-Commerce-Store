@@ -3,6 +3,7 @@ using E_CommerceAPI.Services;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
+using Stripe;
 
 namespace E_CommerceAPI
 {
@@ -12,6 +13,8 @@ namespace E_CommerceAPI
         {
             var builder = WebApplication.CreateBuilder(args);
             {
+                StripeConfiguration.ApiKey = builder.Configuration["Stripe:SecKey"];
+
                 // Add services to the container.
                 builder.Services.AddCors(options => options.AddPolicy("ReactECommerce", policy => policy.WithOrigins("http://localhost:5173").AllowAnyHeader().AllowAnyMethod()));
                 builder.Services.AddDbContext<DataContext>(options => options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
@@ -20,8 +23,9 @@ namespace E_CommerceAPI
                 builder.Services.AddEndpointsApiExplorer();
                 builder.Services.AddSwaggerGen();
                 builder.Services.AddAutoMapper(typeof(Program).Assembly);
-                builder.Services.AddScoped<IProductService, ProductService>();
+                builder.Services.AddScoped<IProductService, Services.ProductService>();
                 builder.Services.AddScoped<IUserService, UserService>();
+                builder.Services.AddScoped<ICheckoutService, CheckoutService>();
                 //builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddJwtBearer(options => 
                 //{
                 //    options.TokenValidationParameters = new TokenValidationParameters

@@ -5,6 +5,7 @@ function User()
 
     return(
         <>
+        <button className='logout'>Logout</button>
         </>
     );
 }

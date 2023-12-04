@@ -1,9 +1,12 @@
 import React, { useState } from 'react';
 import './Login.css';
 import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
 
 function Login()
 {
+    const nav = useNavigate();
+    
     const [register, SetRegister] = useState(false);
     const [returnMessage, SetReturnMessage] = useState('');
 
@@ -39,7 +42,6 @@ function Login()
         axios.post(uri, data)
         .then(result => {
             SetReturnMessage(result.data.message)
-            sessionStorage.setItem('JWTToken', result.data.data)
         })
 
         console.log(returnMessage);
@@ -59,6 +61,8 @@ function Login()
             SetReturnMessage(result.data.message);
             sessionStorage.setItem('JWTToken', result.data.data);
         });
+
+        nav("/");
     }
 
     const ForgotPassword = () =>
@@ -77,7 +81,7 @@ function Login()
             <section className='Login'>
                 <div className="formBox">
                         <form action="">
-                            <h1 className='formName'>Login</h1>
+                            {register ? (<h1 className='formName'>Register</h1>) : (<h1 className='formName'>Login</h1>)}
                             <div className="inputBox">
                                 <input type="email" required onChange={e => HandleEmailChange(e.target.value)}/>
                                 <label htmlFor="">Email</label>

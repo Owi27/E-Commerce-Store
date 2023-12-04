@@ -1,4 +1,4 @@
-;import { useNavigate, useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import './Verify.css';
 import axios from 'axios';
 import React, { useState } from 'react';
