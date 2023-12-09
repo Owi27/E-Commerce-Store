@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import './Login.css';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
@@ -42,6 +42,7 @@ function Login()
         axios.post(uri, data)
         .then(result => {
             SetReturnMessage(result.data.message)
+            if (!returnMessage) SetRegister(false);
         })
 
         console.log(returnMessage);
@@ -49,20 +50,29 @@ function Login()
 
     const Login = () =>
     {
-        const data = {
+        console.log(email);
+        console.log(password);
+
+        const request = {
             Email: email,
             Password: password
         }
 
         const uri = 'https://localhost:7159/User/Login';
 
-        axios.post(uri, data)
-        .then(result => {
-            SetReturnMessage(result.data.message);
-            sessionStorage.setItem('JWTToken', result.data.data);
-        });
+        axios.post(uri, request)
+        .then((response) =>
+            {
+                console.log(response);
+                SetReturnMessage(response.data.message)
+                console.log(returnMessage);
+                if (!returnMessage)
+                {
+                    sessionStorage.setItem('JWTToken', response.data.data); //Don't ever actually do
+                }
+            });
 
-        nav("/");
+        if(sessionStorage.getItem("JWTToken") && sessionStorage.getItem("JWTToken") != null) nav("/");
     }
 
     const ForgotPassword = () =>

@@ -2,10 +2,14 @@ import './User.css';
 
 function User()
 {
+    const Logout = () =>
+    {
+        sessionStorage.removeItem('JWTToken');
+    }
 
     return(
         <>
-        <button className='logout'>Logout</button>
+        <button className='logout' onClick={() => Logout()}>Logout</button>
         </>
     );
 }

@@ -233,7 +233,7 @@ namespace E_CommerceAPI.Services
             using (var smtp = new SmtpClient())
             {
                 smtp.Connect("smtp.gmail.com", 587, MailKit.Security.SecureSocketOptions.StartTls);
-                smtp.Authenticate("owi.ecommerce02@gmail.com", "nvosndcjpmphdvgs");
+                smtp.Authenticate("owi.ecommerce02@gmail.com", "gwzllxhszyiplzrm");
                 smtp.Send(mail);
                 smtp.Disconnect(true);
             }
